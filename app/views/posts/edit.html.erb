@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
+<% if can? :read, @post %>
+  <td><%= link_to 'Show', @post %></td>
+<% end %>
 <%= link_to 'Back', posts_path %>
