@@ -7,6 +7,7 @@ gem 'enumerize'
 gem 'cancan'
 gem 'simple_form'
 gem "haml-rails"
+gem 'bootstrap-sass'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 
