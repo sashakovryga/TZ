@@ -5,6 +5,8 @@ gem 'rails', '4.0.2'
 gem 'devise'
 gem 'enumerize'
 gem 'cancan'
+gem 'simple_form'
+gem "haml-rails"
 # Use mysql as the database for Active Record
 gem 'mysql2'
 
