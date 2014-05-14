@@ -7,7 +7,14 @@ Tz::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'posts#index'
-
+  get 'profile' => 'profile#index'
+  namespace :profile do
+    get 'all_posts'
+    get 'draft'
+    get 'new_posts'
+    get 'publish'
+    get 'archive'
+  end  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
