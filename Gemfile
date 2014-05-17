@@ -8,6 +8,8 @@ gem 'cancan'
 gem 'simple_form'
 gem "haml-rails"
 gem 'bootstrap-sass'
+gem 'state_machine'
+gem 'ruby-graphviz', :require => 'graphviz'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 

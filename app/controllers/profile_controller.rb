@@ -1,27 +1,26 @@
 class ProfileController < ApplicationController
+  def index
 
-	def index
+  end
 
-	end
+  def all_posts
+    @posts = Post.all
+  end
 
-	def all_posts
+  def draft  
+  
+  end
 
-	end
+  def new_posts
 
-	def draft
+  end
 
-	end
+  def publish
 
-	def new_posts
+  end
 
-	end
+  def archive
 
-	def publish
-
-	end
-
-	def archive
-
-	end
+  end
 
 end
