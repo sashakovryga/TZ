@@ -14,6 +14,7 @@ Tz::Application.routes.draw do
     get 'new_posts'
     get 'publish'
     get 'archive'
+    post 'transaction'
   end  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -14,21 +14,15 @@
           %li= link_to "Edit profile", edit_user_registration_path
     %div.span9
       %div.row-fluid
-        %div.span4
-          %h2 Heading
-          %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          %p
-            %a{:class=>"btn", :href=>"#"} View details &raquo
-        %div.span4
-          %h2 Heading
-          %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          %p
-            %a{:class=>"btn", :href=>"#"} View details &raquo
-        %div.span4
-          %h2 Heading
-          %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          %p
-            %a{:class=>"btn", :href=>"#"} View details &raquo            
+        - @posts.each do |post|
+          %div.span4
+            %h2= post.title
+            %p= post.description
+            %p
+              .btn= link_to 'View details &raquo', post
+              = simple_form_for(post,url:profile_transaction_path, method: :post) do |f|
+                = f.hidden_field :id
+                .btn.btn-success= f.submit
 %hr
 %footer
   %p &copy; TZ 2014

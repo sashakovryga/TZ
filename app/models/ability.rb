@@ -10,9 +10,10 @@ class Ability
     end
     
     if user.role.user?
-      can [:update, :destroy, :create], Post do |post|
+      can [:update, :destroy], Post do |post|
           post.try(:user) == user
       end
+      can :create, Post      
     end
 
     can :read, Post

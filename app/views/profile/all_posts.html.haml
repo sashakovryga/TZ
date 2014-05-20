@@ -19,8 +19,7 @@
             %h2= post.title 
             %p= post.description 
             %p
-            - if can? :read, @post 
-              .btn= link_to 'View details &raquo', post       
+              .btn= link_to 'View details &raquo', post
 %hr
 %footer
   %p &copy; TZ 2014
