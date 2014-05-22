@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(post_params) && @post.life_cycle == 'draft'
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else

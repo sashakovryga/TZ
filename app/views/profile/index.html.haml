@@ -4,7 +4,8 @@
       %div.well.sidebar-nav
         %ul.nav.nav-list
           %li.nav-header Posts
-          %li= link_to "Create post", new_post_path
+          - if current_user.role.user? 
+            %li= link_to "Create post", new_post_path
           %li.active= link_to "All posts", profile_all_posts_path
           %li= link_to "Draft", profile_draft_path
           %li= link_to "New posts", profile_new_posts_path

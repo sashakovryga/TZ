@@ -4,8 +4,8 @@
       %div.well.sidebar-nav
         %ul.nav.nav-list
           %li.nav-header Posts
-          %li= link_to "Create post", new_post_path
-          %li.active= link_to "All posts", profile_all_posts_path
+          %li.active= link_to "Create post", new_post_path
+          %li= link_to "All posts", profile_all_posts_path
           %li= link_to "Draft", profile_draft_path
           %li= link_to "New posts", profile_new_posts_path
           %li= link_to "Publish", profile_publish_path
@@ -14,14 +14,10 @@
           %li= link_to "Edit profile", edit_user_registration_path
     %div.span9
       %div.row-fluid
-        - @posts.each do |post| 
-          %div.span4
-            %h2= post.title 
-            %p= post.description 
-            %p
-              .btn= link_to 'View details &raquo', post
-              - if can? :destroy, post
-                %p.btn= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
-%hr
-%footer
-  %p &copy; TZ 2014
+        %div.span12 
+          %h1 Editing user
+
+          = render 'form'
+
+          - if can? :read, @user 
+            %td= link_to 'Show', @user

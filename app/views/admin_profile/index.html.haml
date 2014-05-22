@@ -1,0 +1,25 @@
+%div.container-fluid
+  %div.row-fluid
+    %div.span3
+      %div.well.sidebar-nav
+        %ul.nav.nav-list
+          %li.nav-header Posts
+          %li.active= link_to "All posts", profile_all_posts_path
+          %li.nav-header Users
+          %li= link_to "All users"
+          %li.nav-header My profile
+          %li= link_to "Edit profile", edit_user_registration_path
+    %div.span9
+      %div.row-fluid
+        - @users.each do |user|
+          %div.span4
+            %h2= user.name
+            %p= user.last_name
+            %p
+              - if can? :destroy, user
+                %p.btn= link_to 'Destroy', admin_profile_path, method: :delete, data: { confirm: 'Are you sure?' }
+              - if can? :update, user
+                %p.btn= link_to 'Edit', controller: "admin_profile", action: "edit_user", id: user.id
+%hr
+%footer
+  %p &copy; TZ 2014

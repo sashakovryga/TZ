@@ -20,6 +20,8 @@
             %p= post.description
             %p
               .btn= link_to 'View details &raquo', post
+              - if can? :destroy, post
+                %p.btn= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
               = simple_form_for(post,url:profile_transaction_path, method: :post) do |f|
                 = f.hidden_field :id
                 .btn.btn-success= f.submit
