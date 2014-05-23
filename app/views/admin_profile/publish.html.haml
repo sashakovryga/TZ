@@ -4,9 +4,9 @@
       %div.well.sidebar-nav
         %ul.nav.nav-list
           %li.nav-header Posts
-          %li.active= link_to "All posts", admin_profile_all_posts_path
+          %li= link_to "All posts", admin_profile_all_posts_path
           %li= link_to "New Posts", admin_profile_new_posts_path
-          %li= link_to "Publish", admin_profile_publish_path
+          %li.active= link_to "Publish", admin_profile_publish_path
           %li= link_to "Archive", admin_profile_archive_path
           %li.nav-header Users
           %li= link_to "All users"
@@ -15,10 +15,10 @@
           %li= link_to "Edit profile", edit_user_registration_path
     %div.span9
       %div.row-fluid
-        - @posts.each do |post| 
+        - @posts.each do |post|
           %div.span4
-            %h2= post.title 
-            %p= post.description 
+            %h2= post.title
+            %p= post.description
             %p
               .btn= link_to 'View details &raquo', post
               - if can? :destroy, post

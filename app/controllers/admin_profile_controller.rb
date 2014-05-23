@@ -13,6 +13,14 @@ class AdminProfileController < ApplicationController
     @posts = Post.where(life_cycle:"new_post")
   end
 
+  def publish
+    @posts = Post.where(life_cycle:"publish")
+  end
+
+  def archive
+    @posts = Post.where(life_cycle:"archive")
+  end
+
   def transaction
     @post = Post.find_by(post_params)
     @post.go_to_draft if @post.life_cycle == 'new_post'

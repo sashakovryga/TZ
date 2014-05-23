@@ -21,6 +21,8 @@ Tz::Application.routes.draw do
     resources :users
     get 'all_posts'
     get 'new_posts'
+    get 'publish'
+    get 'archive'
     post 'transaction'
     post 'transaction_for_approved'    
   end
