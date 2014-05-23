@@ -4,22 +4,24 @@
       %div.well.sidebar-nav
         %ul.nav.nav-list
           %li.nav-header Posts
-          %li.active= link_to "All posts", profile_all_posts_path
+          %li= link_to "All posts", admin_profile_all_posts_path
+          %li= link_to "New Posts", admin_profile_new_posts_path
           %li.nav-header Users
-          %li= link_to "All users"
+          %li.active= link_to "All users"
+          %li= link_to "New user", new_admin_profile_user_path
           %li.nav-header My profile
           %li= link_to "Edit profile", edit_user_registration_path
     %div.span9
       %div.row-fluid
         - @users.each do |user|
           %div.span4
-            %h2= user.name
+            %h2= link_to user.name, admin_profile_user_path(user)
             %p= user.last_name
             %p
               - if can? :destroy, user
-                %p.btn= link_to 'Destroy', admin_profile_path, method: :delete, data: { confirm: 'Are you sure?' }
+                %p.btn= link_to 'Destroy', admin_profile_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
               - if can? :update, user
-                %p.btn= link_to 'Edit', controller: "admin_profile", action: "edit_user", id: user.id
+                %p.btn= link_to 'Edit', edit_admin_profile_user_path(user)
 %hr
 %footer
   %p &copy; TZ 2014

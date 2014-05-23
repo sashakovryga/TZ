@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
-    before_filter :authenticate_user!
+    before_filter :authenticate_user!, :user!
     before_action :set_posts, only: [:index, :all_posts]
 
     def index
@@ -29,9 +29,6 @@ class ProfileController < ApplicationController
     def transaction
       @post = current_user.posts.find_by(post_params)
       @post.go_to_new if @post.life_cycle == 'draft'
-      @post.good_post if @post.life_cycle == 'new_post'
-      @post.published if @post.life_cycle == 'approved'
-      @post.go_to_archive if @post.life_cycle == 'publish'
       @post.go_to_draft if @post.life_cycle == 'new_post' || 'archive'
     end
 
@@ -42,6 +39,10 @@ class ProfileController < ApplicationController
 
     def post_params
         params.require(:post).permit(:id,:life_cycle)
+    end
+
+    def user!
+      redirect_to root_path, notice: 'Не имеете права доступа!' unless current_user.role.user?
     end
 
 end

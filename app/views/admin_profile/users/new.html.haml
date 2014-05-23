@@ -16,4 +16,10 @@
       %div.row-fluid
         %div.span12 
           %h1 New user
-          = render 'form'
+          = simple_form_for(admin_profile_users_path,url:admin_profile_users_path, method: :post) do |f| 
+            = f.input :name 
+            = f.input :last_name
+            = f.input :email, autofocus: true
+            = f.input :password, autocomplete: "off"
+            = f.input :role
+            .btn.btn-success= f.submit

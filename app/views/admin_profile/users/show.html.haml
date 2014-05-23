@@ -1,22 +1,27 @@
 #notice= notice 
-
-%p
-	%strong Title:
-	= @post.title 
-
-%p
-	%strong Description:
-	= @post.description
-
-%p
-	%strong Type:
-	= @post.type
-
-%p
-	%strong Life cycle:
-	= @post.life_cycle
-
-- if can? :update, @post 
-	= link_to 'Edit', edit_post_path(@post)
-
-= link_to 'Back', posts_path
+%div.container-fluid
+  %div.row-fluid
+    %div.span3
+      %div.well.sidebar-nav
+        %ul.nav.nav-list
+          %li.nav-header Posts
+          %li= link_to "All posts", profile_all_posts_path
+          %li.nav-header Users
+          %li= link_to "All users", admin_profile_path
+          %li.nav-header My profile
+          %li= link_to "Edit profile", edit_user_registration_path
+    %div.span9
+      %div.row-fluid
+        %div.span12
+          %h2= @user.name
+          %p Last name: #{@user.last_name}
+          %p Email: #{@user.email}
+          %p Role: #{@user.role}
+          %p
+            - if can? :destroy, @user
+              %p.btn= link_to 'Destroy', admin_profile_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }
+            - if can? :update, @user
+              %p.btn= link_to 'Edit', edit_admin_profile_user_path(@user)
+%hr
+%footer
+  %p &copy; TZ 2014

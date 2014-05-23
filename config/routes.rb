@@ -19,10 +19,10 @@ Tz::Application.routes.draw do
   get 'admin_profile' => 'admin_profile#index'
   namespace :admin_profile do
     resources :users
-    #get 'new_user'
-    #get 'edit_user/:id' => '#edit_user'
-    #post 'create_user'
-    #put 'update_user/:id' => '#update_user'
+    get 'all_posts'
+    get 'new_posts'
+    post 'transaction'
+    post 'transaction_for_approved'    
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

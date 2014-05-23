@@ -10,6 +10,7 @@ gem "haml-rails"
 gem 'bootstrap-sass'
 gem 'state_machine'
 gem 'ruby-graphviz', :require => 'graphviz'
+gem 'whenever', :require => false
 # Use mysql as the database for Active Record
 gem 'mysql2'
 

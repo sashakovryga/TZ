@@ -16,8 +16,9 @@
       %div.row-fluid
         %div.span12 
           %h1 Editing user
-
-          = render 'form'
-
-          - if can? :read, @user 
-            %td= link_to 'Show', @user
+          = simple_form_for(admin_profile_user_path,url:admin_profile_user_path, method: :put) do |f| 
+            = f.input :name , input_html: { value: @user.name }
+            = f.input :last_name, input_html: { value: @user.last_name }
+            = f.input :email, autofocus: true, input_html: { value: @user.email }
+            = f.input :role, input_html: { value: @user.role }
+            .btn.btn-success= f.submit
