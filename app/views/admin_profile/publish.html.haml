@@ -23,6 +23,7 @@
               .btn= link_to 'View details &raquo', post
               - if can? :destroy, post
                 %p.btn= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
+  %center= will_paginate @posts
 %hr
 %footer
   %p &copy; TZ 2014

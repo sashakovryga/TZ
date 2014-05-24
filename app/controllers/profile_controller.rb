@@ -40,7 +40,7 @@ class ProfileController < ApplicationController
 
   private
     def set_posts
-      @posts = current_user.posts
+      @posts = current_user.posts.paginate(page: params[:page])
     end
 
     def post_params

@@ -24,6 +24,7 @@
                 %p.btn= link_to 'Destroy', admin_profile_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
               - if can? :update, user
                 %p.btn= link_to 'Edit', edit_admin_profile_user_path(user)
+  %center= will_paginate @posts
 %hr
 %footer
   %p &copy; TZ 2014

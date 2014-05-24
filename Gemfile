@@ -14,6 +14,8 @@ gem 'whenever', :require => false
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "nested_form", :git => 'https://github.com/ryanb/nested_form.git'
 gem "cocoon" # helper nested_form
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 

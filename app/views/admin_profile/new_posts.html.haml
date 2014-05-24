@@ -29,6 +29,7 @@
               = simple_form_for(post,url:admin_profile_transaction_for_approved_path, method: :post) do |f|
                 = f.hidden_field :id
                 .btn.btn-success= f.submit "Status approved"
+  %center= will_paginate @posts
 %hr
 %footer
   %p &copy; TZ 2014

@@ -2,23 +2,23 @@ class AdminProfileController < ApplicationController
   before_filter :authenticate_user!, :admin!
 
   def index
-    @users = User.all
+    @users = User.all.paginate(page: params[:page])
   end
 
   def all_posts
-    @posts = Post.where.not(life_cycle:"draft")
+    @posts = Post.where.not(life_cycle:"draft").paginate(page: params[:page])
   end
 
   def new_posts
-    @posts = Post.where(life_cycle:"new_post")
+    @posts = Post.where(life_cycle:"new_post").paginate(page: params[:page])
   end
 
   def publish
-    @posts = Post.where(life_cycle:"publish")
+    @posts = Post.where(life_cycle:"publish").paginate(page: params[:page])
   end
 
   def archive
-    @posts = Post.where(life_cycle:"archive")
+    @posts = Post.where(life_cycle:"archive").paginate(page: params[:page])
   end
 
   def transaction

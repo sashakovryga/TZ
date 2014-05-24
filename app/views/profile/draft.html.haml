@@ -28,6 +28,7 @@
               = simple_form_for(post,url:profile_transaction_path, method: :post) do |f|
                 = f.hidden_field :id
                 = f.submit "Status new"
+  %center= will_paginate @posts
 %hr
 %footer
   %p &copy; TZ 2014
