@@ -3,8 +3,10 @@ Post.destroy_all
 
 #crete admin
 admin = User.create email: "admin@admin.com",
-                    password: "password",
-                    role: "admin"
+                  name: "Admininstrator",
+                  last_name: "Fantom",
+                  password: "password"
+admin.update(role:'admin')
 
 #create users
 names = ["sasha","masha","dasha","katya","misha"]
@@ -21,12 +23,12 @@ end
 #create posts
 title = "Post"
 description = "Very very long text..."
-life_cycles = [:draft,:publish,:approved,:archive,:new_post]
+life_cycles = ["draft","publish","approved","archive","new_post"]
 count = 20
 count.times do |i|
 post = Post.create title: title + "#{i}",
-                   description: description*(i%3),
-                   life_cycle: life_cycles[i%3]
+                   description: description*(rand(3)+1),
+                   life_cycle: life_cycles[i%5]
 
 #create user has_many posts
 User.all[rand(names.count)+1].posts << post

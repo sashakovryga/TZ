@@ -28,8 +28,14 @@ class ProfileController < ApplicationController
 
     def transaction
       @post = current_user.posts.find_by(post_params)
-      @post.go_to_new if @post.life_cycle == 'draft'
-      @post.go_to_draft if @post.life_cycle == 'new_post' || 'archive'
+      if @post.life_cycle == 'draft'
+        @post.go_to_new
+        redirect_to profile_path, notice: 'Status update.' and return
+      end
+      if @post.life_cycle == 'new_post' || 'archive'
+        @post.go_to_draft
+        redirect_to profile_path, notice: 'Status update.' and return
+      end
     end
 
   private

@@ -1,3 +1,19 @@
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 98b31aa789a0d7f6a21c74ca32b8cc5aa94803cf
+  specs:
+    paperclip (4.1.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+
+GIT
+  remote: https://github.com/ryanb/nested_form.git
+  revision: 1b0689dfb4d230ceabd278eba159fcb02f23c68a
+  specs:
+    nested_form (0.3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -32,6 +48,11 @@ GEM
     builder (3.1.4)
     cancan (1.6.7)
     chronic (0.10.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
+    cocoon (1.2.6)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -139,6 +160,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   cancan
+  cocoon
   coffee-rails (~> 4.0.0)
   devise
   enumerize
@@ -146,6 +168,8 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
+  nested_form!
+  paperclip!
   rails (= 4.0.2)
   ruby-graphviz
   sass-rails (~> 4.0.0)

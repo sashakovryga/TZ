@@ -17,6 +17,7 @@
         - @posts.each do |post|
           %div.span4
             %h2= post.title
+            -#= image_tag post.image.url(:thumb)
             %p= post.description
             %p
               .btn= link_to 'View details &raquo', post
@@ -26,7 +27,7 @@
                 %p.btn= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
               = simple_form_for(post,url:profile_transaction_path, method: :post) do |f|
                 = f.hidden_field :id
-                .btn.btn-success= f.submit "Status new"
+                = f.submit "Status new"
 %hr
 %footer
   %p &copy; TZ 2014

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513205237) do
+ActiveRecord::Schema.define(version: 20140524093421) do
+
+  create_table "images", force: true do |t|
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "images", ["post_id"], name: "index_images_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"

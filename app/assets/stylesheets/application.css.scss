@@ -12,3 +12,4 @@
  *= require_tree .
  */
 @import "bootstrap";
+input[type=submit] { @extend .btn; @extend .btn-success}
