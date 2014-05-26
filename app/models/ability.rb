@@ -8,14 +8,14 @@ class Ability
     if user.role.admin?
       can :manage, :all
     end
+    
     if user.role.user?
-      can [:update, :destroy], Post do |post|
+      can [:update, :destroy, :create], Post do |post|
           post.try(:user) == user
       end
-      can :create, Post
     end
 
-    can :read, :all
+    can :read, Post
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

@@ -1,0 +1,34 @@
+%div.container-fluid
+  %div.row-fluid
+    %div.span3
+      %div.well.sidebar-nav
+        %ul.nav.nav-list
+          %li.nav-header Posts
+          %li= link_to "Create post", new_post_path
+          %li= link_to "All posts", profile_all_posts_path
+          %li.active= link_to "Draft", profile_draft_path
+          %li= link_to "New posts", profile_new_posts_path
+          %li= link_to "Publish", profile_publish_path
+          %li= link_to "Archive", profile_archive_path
+          %li.nav-header My profile
+          %li= link_to "Edit profile", edit_user_registration_path
+    %div.span9
+      %div.row-fluid
+        %div.span4
+          %h2 Heading
+          %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+          %p
+            %a{:class=>"btn", :href=>"#"} View details &raquo
+        %div.span4
+          %h2 Heading
+          %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+          %p
+            %a{:class=>"btn", :href=>"#"} View details &raquo
+        %div.span4
+          %h2 Heading
+          %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+          %p
+            %a{:class=>"btn", :href=>"#"} View details &raquo            
+%hr
+%footer
+  %p &copy; TZ 2014
