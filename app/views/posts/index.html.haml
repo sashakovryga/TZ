@@ -2,14 +2,21 @@
 %div.container-fluid
   %div.row-fluid
     %div.span12
+      %center
+        %div.btn-group
+          %button{:class => 'btn dropdown-toggle', "data-toggle" => 'dropdown'}
+            Sort
+          %ul.dropdown-menu
+            %li= sort_link @q, :title
+            %li= sort_link @q, :created_at
       %div.row-fluid
         - @posts.each do |post|
           %div.span4
-            %h2= post.title
-            -#= image_tag post.images.first.picture.url(:thumb)
+            %h2= link_to post.title, post 
+            - if post.images.count > 0
+              = image_tag post.images[0].picture.url(:thumb)
             %p= post.description
             %p
-              .btn= link_to 'View details &raquo', post
   %center= will_paginate @post
 %hr
 %footer

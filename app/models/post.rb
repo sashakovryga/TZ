@@ -2,7 +2,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, :allow_destroy => true
-  validates :title, :description, presence: true
+  validates :title, presence: true, length: { in: 3..25 }
+  validates :description,presence:true, length: { maximum: 300 }
   self.per_page = 3
   state_machine :life_cycle, initial: :draft do
  

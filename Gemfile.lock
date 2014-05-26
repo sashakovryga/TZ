@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/activerecord-hackery/ransack.git
+  revision: 6fa74a079ae33e520c9d69a6e6dfc45cc055b323
+  branch: rails-4
+  specs:
+    ransack (1.2.3)
+      actionpack (>= 4.0)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      i18n
+      polyamorous (~> 1.0.0)
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 98b31aa789a0d7f6a21c74ca32b8cc5aa94803cf
   specs:
@@ -95,6 +107,8 @@ GEM
     multi_json (1.10.0)
     mysql2 (0.3.15)
     orm_adapter (0.5.0)
+    polyamorous (1.0.0)
+      activerecord (>= 3.0)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -175,6 +189,7 @@ DEPENDENCIES
   nested_form!
   paperclip!
   rails (= 4.0.2)
+  ransack!
   ruby-graphviz
   sass-rails (~> 4.0.0)
   sdoc

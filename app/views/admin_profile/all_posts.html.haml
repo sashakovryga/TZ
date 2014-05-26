@@ -17,10 +17,11 @@
       %div.row-fluid
         - @posts.each do |post| 
           %div.span4
-            %h2= post.title 
+            %h2= link_to post.title, post 
+            - if post.images.count > 0
+              = image_tag post.images[0].picture.url(:thumb) 
             %p= post.description 
             %p
-              .btn= link_to 'View details &raquo', post
               - if can? :destroy, post
                 %p.btn= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
   %center= will_paginate @posts

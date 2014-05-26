@@ -11,19 +11,19 @@ class ProfileController < ApplicationController
     end
 
     def draft  
-      @posts = current_user.posts.where(life_cycle:"draft")
+      @posts = current_user.posts.where(life_cycle:"draft").paginate(page: params[:page])
     end
 
     def new_posts
-      @posts = current_user.posts.where(life_cycle:"new_post")
+      @posts = current_user.posts.where(life_cycle:"new_post").paginate(page: params[:page])
     end
 
     def publish
-      @posts = current_user.posts.where(life_cycle:"publish")
+      @posts = current_user.posts.where(life_cycle:"publish").paginate(page: params[:page])
     end
 
     def archive
-      @posts = current_user.posts.where(life_cycle:"archive")
+      @posts = current_user.posts.where(life_cycle:"archive").paginate(page: params[:page])
     end
 
     def transaction

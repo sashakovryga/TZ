@@ -16,6 +16,8 @@
               %li= link_to "Profile", profile_path
             - if current_user.role.admin?
               %li= link_to "Admin profile", admin_profile_path
+        = search_form_for @q, :class => "navbar-search pull-center" do |f|
+          = f.input :title_or_description_cont, placeholder: "Search", required: false, label: false
       %div.navbar-text.pull-right
         - if user_signed_in?
           %span Здравствуйте, #{current_user.email}
