@@ -26,10 +26,10 @@
                 %p.btn= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
               = simple_form_for(post,url:admin_profile_transaction_path, method: :post) do |f|
                 = f.hidden_field :id
-                .btn.btn-success= f.submit "Status draft"
+                = f.submit "Status draft"
               = simple_form_for(post,url:admin_profile_transaction_for_approved_path, method: :post) do |f|
                 = f.hidden_field :id
-                .btn.btn-success= f.submit "Status approved"
+                = f.submit "Status approved"
   %center= will_paginate @posts
 %hr
 %footer

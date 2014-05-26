@@ -22,7 +22,7 @@
             %p= post.description
             %p
               - if can? :update, post 
-                %p= link_to 'Edit', edit_post_path(post) 
+                %p.btn= link_to 'Edit', edit_post_path(post) 
               - if can? :destroy, post
                 %p.btn= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
               = simple_form_for(post,url:profile_transaction_path, method: :post) do |f|

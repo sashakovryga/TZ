@@ -2,12 +2,11 @@
 %div.container-fluid
   %div.row-fluid
     %div.span12
-      %div.row-fluid
-        %div.span8
-          %h2= @post.title
-          - @post.images.count.times do |i|
-            = image_tag @post.images[i-1].picture.url(:thumb)
-          %p= @post.description
+      %center
+        %h2= @post.title
+        - @post.images.count.times do |i|
+          = image_tag @post.images[i-1].picture.url(:thumb)
+        %p= @post.description
 %hr
 %footer
   %p &copy; TZ 2014
