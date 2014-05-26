@@ -1,0 +1,30 @@
+%html
+%head
+  %title Tz
+  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true 
+  = javascript_include_tag "application", "data-turbolinks-track" => true 
+  = csrf_meta_tags 
+%body
+%div.navbar.navbar-fixed-top.navbar-inverse
+  %div.navbar-inner
+    %div.container
+      %div.nav-collapse
+        %ul.nav
+          %li= link_to "Home", posts_path
+          - if user_signed_in?
+            - if current_user.role.user?
+              %li= link_to "Profile", profile_path
+            - if current_user.role.admin?
+              %li= link_to "Admin profile", admin_profile_path
+        = search_form_for @q, :class => "navbar-search pull-center" do |f|
+          = f.input :title_or_description_cont, placeholder: "Search", required: false, label: false
+      %div.navbar-text.pull-right
+        - if user_signed_in?
+          %span Здравствуйте, #{current_user.email}
+          = link_to 'Выйти', destroy_user_session_path, :method => :delete
+        - else
+          %p #{link_to 'Войти', new_user_session_path} или #{link_to 'Зарегистрироваться', new_user_registration_path}
+
+%p.notice= notice
+%p.alert= alert
+= yield

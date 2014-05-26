@@ -1,31 +1,23 @@
-%h1 Listing posts
-
-%table
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th Type
-      %th Life cycle
-      %th
-      %th
-      %th
-
-  %tbody
-    - @posts.each do |post| 
-      %tr
-        %td= post.title 
-        %td= post.description 
-        %td= post.type
-        %td= post.life_cycle 
-        - if can? :read, @post 
-          %td= link_to 'Show', post 
-        - if can? :update, @post 
-          %td= link_to 'Edit', edit_post_path(post) 
-        - if can? :destroy, @post
-          %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } 
-
-%br
-
-- if can? :create, @post 
-  = link_to 'New Post', new_post_path 
+#notice= notice
+%div.container-fluid
+  %div.row-fluid
+    %div.span12
+      %center
+        %div.btn-group
+          %button{:class => 'btn dropdown-toggle', "data-toggle" => 'dropdown'}
+            Sort
+          %ul.dropdown-menu
+            %li= sort_link @q, :title
+            %li= sort_link @q, :created_at
+      %div.row-fluid
+        - @posts.each do |post|
+          %div.span4
+            %h2= link_to post.title, post 
+            - if post.images.count > 0
+              = image_tag post.images[0].picture.url(:thumb)
+            %p= post.description
+            %p
+  %center= will_paginate @post
+%hr
+%footer
+  %p &copy; TZ 2014

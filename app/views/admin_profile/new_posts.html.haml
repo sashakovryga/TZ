@@ -1,0 +1,36 @@
+%div.container-fluid
+  %div.row-fluid
+    %div.span3
+      %div.well.sidebar-nav
+        %ul.nav.nav-list
+          %li.nav-header Posts
+          %li= link_to "All posts", admin_profile_all_posts_path
+          %li.active= link_to "New Posts", admin_profile_new_posts_path
+          %li= link_to "Publish", admin_profile_publish_path
+          %li= link_to "Archive", admin_profile_archive_path
+          %li.nav-header Users
+          %li= link_to "All users", admin_profile_path
+          %li= link_to "New user", new_admin_profile_user_path
+          %li.nav-header My profile
+          %li= link_to "Edit profile", edit_user_registration_path
+    %div.span9
+      %div.row-fluid
+        - @posts.each do |post|
+          %div.span4
+            %h2= link_to post.title, post 
+            - if post.images.count > 0
+              = image_tag post.images[0].picture.url(:thumb)
+            %p= post.description
+            %p
+              - if can? :destroy, post
+                %p.btn= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
+              = simple_form_for(post,url:admin_profile_transaction_path, method: :post) do |f|
+                = f.hidden_field :id
+                .btn.btn-success= f.submit "Status draft"
+              = simple_form_for(post,url:admin_profile_transaction_for_approved_path, method: :post) do |f|
+                = f.hidden_field :id
+                .btn.btn-success= f.submit "Status approved"
+  %center= will_paginate @posts
+%hr
+%footer
+  %p &copy; TZ 2014

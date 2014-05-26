@@ -6,13 +6,15 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
     if user.role.admin?
-      can :manage, :all
+      can :manage, User
+      can :destroy, Post
     end
     
     if user.role.user?
-      can [:update, :destroy, :create], Post do |post|
+      can [:update, :destroy], Post do |post|
           post.try(:user) == user
       end
+      can :create, Post      
     end
 
     can :read, Post

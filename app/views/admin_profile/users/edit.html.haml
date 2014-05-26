@@ -1,0 +1,25 @@
+%div.container-fluid
+  %div.row-fluid
+    %div.span3
+      %div.well.sidebar-nav
+        %ul.nav.nav-list
+          %li.nav-header Posts
+          %li= link_to "All posts", admin_profile_all_posts_path
+          %li= link_to "New Posts", admin_profile_new_posts_path
+          %li= link_to "Publish", admin_profile_publish_path
+          %li= link_to "Archive", admin_profile_archive_path
+          %li.nav-header Users
+          %li.active= link_to "All users", admin_profile_path
+          %li= link_to "New user", new_admin_profile_user_path
+          %li.nav-header My profile
+          %li= link_to "Edit profile", edit_user_registration_path
+    %div.span9
+      %div.row-fluid
+        %div.span12 
+          %h1 Editing user
+          = simple_form_for(admin_profile_user_path,url:admin_profile_user_path, method: :put) do |f| 
+            = f.input :name , input_html: { value: @user.name }
+            = f.input :last_name, input_html: { value: @user.last_name }
+            = f.input :email, autofocus: true, input_html: { value: @user.email }
+            = f.input :role, input_html: { value: @user.role }
+            .btn.btn-success= f.submit

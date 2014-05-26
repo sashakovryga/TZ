@@ -14,21 +14,21 @@
           %li= link_to "Edit profile", edit_user_registration_path
     %div.span9
       %div.row-fluid
-        %div.span4
-          %h2 Heading
-          %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          %p
-            %a{:class=>"btn", :href=>"#"} View details &raquo
-        %div.span4
-          %h2 Heading
-          %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          %p
-            %a{:class=>"btn", :href=>"#"} View details &raquo
-        %div.span4
-          %h2 Heading
-          %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          %p
-            %a{:class=>"btn", :href=>"#"} View details &raquo            
+        - @posts.each do |post|
+          %div.span4
+            %h2= link_to post.title, post 
+            - if post.images.count > 0
+              = image_tag post.images[0].picture.url(:thumb)
+            %p= post.description
+            %p
+              - if can? :update, post 
+                %p= link_to 'Edit', edit_post_path(post) 
+              - if can? :destroy, post
+                %p.btn= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
+              = simple_form_for(post,url:profile_transaction_path, method: :post) do |f|
+                = f.hidden_field :id
+                = f.submit "Status new"
+  %center= will_paginate @posts
 %hr
 %footer
   %p &copy; TZ 2014

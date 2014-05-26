@@ -1,0 +1,31 @@
+#notice= notice 
+%div.container-fluid
+  %div.row-fluid
+    %div.span3
+      %div.well.sidebar-nav
+        %ul.nav.nav-list
+          %li.nav-header Posts
+          %li= link_to "All posts", admin_profile_all_posts_path
+          %li= link_to "New Posts", admin_profile_new_posts_path
+          %li= link_to "Publish", admin_profile_publish_path
+          %li= link_to "Archive", admin_profile_archive_path
+          %li.nav-header Users
+          %li.active= link_to "All users", admin_profile_path
+          %li= link_to "New user", new_admin_profile_user_path
+          %li.nav-header My profile
+          %li= link_to "Edit profile", edit_user_registration_path
+    %div.span9
+      %div.row-fluid
+        %div.span12
+          %h2= @user.name
+          %p Last name: #{@user.last_name}
+          %p Email: #{@user.email}
+          %p Role: #{@user.role}
+          %p
+            - if can? :destroy, @user
+              %p.btn= link_to 'Destroy', admin_profile_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }
+            - if can? :update, @user
+              %p.btn= link_to 'Edit', edit_admin_profile_user_path(@user)
+%hr
+%footer
+  %p &copy; TZ 2014

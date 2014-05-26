@@ -1,0 +1,2 @@
+module AdminProfile::UsersHelper
+end

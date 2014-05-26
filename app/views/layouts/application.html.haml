@@ -10,17 +10,19 @@
     %div.container
       %div.nav-collapse
         %ul.nav
-          %li= link_to "Browse Products", posts_path 
-          %li= link_to "Profile", profile_path 
-          %li= link_to "Contact Us" 
-          %li= link_to "Cart"
-      %div.navbar-text.pull-right   
+          %li= link_to "Home", posts_path
+          - if user_signed_in?
+            - if current_user.role.user?
+              %li= link_to "Profile", profile_path
+            - if current_user.role.admin?
+              %li= link_to "Admin profile", admin_profile_path
+      %div.navbar-text.pull-right
         - if user_signed_in?
-          %span Здравствуйте, #{current_user.email} 
-          = link_to 'Выйти', destroy_user_session_path, :method => :delete 
+          %span Здравствуйте, #{current_user.email}
+          = link_to 'Выйти', destroy_user_session_path, :method => :delete
         - else
-          %p #{link_to 'Войти', new_user_session_path} или #{link_to 'Зарегистрироваться', new_user_registration_path} 
+          %p #{link_to 'Войти', new_user_session_path} или #{link_to 'Зарегистрироваться', new_user_registration_path}
 
-%p.notice= notice 
-%p.alert= alert 
-= yield 
+%p.notice= notice
+%p.alert= alert
+= yield

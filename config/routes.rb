@@ -1,7 +1,6 @@
 Tz::Application.routes.draw do
   devise_for :users
   resources :posts
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -14,7 +13,19 @@ Tz::Application.routes.draw do
     get 'new_posts'
     get 'publish'
     get 'archive'
-  end  
+    post 'transaction'
+  end
+  
+  get 'admin_profile' => 'admin_profile#index'
+  namespace :admin_profile do
+    resources :users
+    get 'all_posts'
+    get 'new_posts'
+    get 'publish'
+    get 'archive'
+    post 'transaction'
+    post 'transaction_for_approved'    
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

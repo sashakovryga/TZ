@@ -5,17 +5,21 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @q = Post.where(life_cycle:"publish").search(search_params)
+    @posts = @q.result.paginate(page: params[:page])
+    render layout: 'home'
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    ender layout: 'home'
   end
 
   # GET /posts/new
   def new
     @post = current_user.posts.new
+    @post.images.build
   end
 
   # GET /posts/1/edit
@@ -42,7 +46,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(post_params) && @post.life_cycle == 'draft'
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
@@ -64,12 +68,16 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def search_params
+    params[:q]
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :description, :type, :life_cycle)
-    end
+  def post_params
+    params.require(:post).permit(:title, :description, :type, :life_cycle, images_attributes: [:picture,:_destroy])
+  end
 end
