@@ -15,7 +15,7 @@ Tz::Application.routes.draw do
     get 'archive'
     post 'transaction'
   end
-  
+
   get 'admin_profile' => 'admin_profile#index'
   namespace :admin_profile do
     resources :users
@@ -24,7 +24,7 @@ Tz::Application.routes.draw do
     get 'publish'
     get 'archive'
     post 'transaction'
-    post 'transaction_for_approved'    
+    post 'transaction_for_approved'
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

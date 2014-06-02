@@ -9,12 +9,12 @@ class Ability
       can :manage, User
       can :destroy, Post
     end
-    
+
     if user.role.user?
       can [:update, :destroy], Post do |post|
           post.try(:user) == user
       end
-      can :create, Post      
+      can :create, Post
     end
 
     can :read, Post

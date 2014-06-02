@@ -6,19 +6,19 @@ class AdminProfileController < ApplicationController
   end
 
   def all_posts
-    @posts = Post.where.not(life_cycle:"draft").paginate(page: params[:page])
+    @posts = Post.where.not(life_cycle: "draft").paginate(page: params[:page])
   end
 
   def new_posts
-    @posts = Post.where(life_cycle:"new_post").paginate(page: params[:page])
+    @posts = Post.where(life_cycle: "new_post").paginate(page: params[:page])
   end
 
   def publish
-    @posts = Post.where(life_cycle:"publish").paginate(page: params[:page])
+    @posts = Post.where(life_cycle: "publish").paginate(page: params[:page])
   end
 
   def archive
-    @posts = Post.where(life_cycle:"archive").paginate(page: params[:page])
+    @posts = Post.where(life_cycle: "archive").paginate(page: params[:page])
   end
 
   def transaction
@@ -36,7 +36,7 @@ class AdminProfileController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:id,:life_cycle)
+    params.require(:post).permit(:id, :life_cycle)
   end
 
   def admin!

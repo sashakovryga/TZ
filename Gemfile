@@ -9,6 +9,7 @@ gem 'simple_form'
 gem "haml-rails"
 gem 'bootstrap-sass'
 gem 'state_machine'
+gem 'rubocop', require: false
 gem 'ruby-graphviz', :require => 'graphviz'
 gem 'whenever', :require => false
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
