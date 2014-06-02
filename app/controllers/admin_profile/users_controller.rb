@@ -63,21 +63,21 @@ class AdminProfile::UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def users_params
-      params.require(admin_profile_users_path).permit(:name, :last_name, :email, :password, :role)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def users_params
+    params.require(admin_profile_users_path).permit(:name, :last_name, :email, :password, :role)
+  end
 
-    def user_params
-      params.require(admin_profile_user_path).permit(:name, :last_name, :email, :password, :role)
-    end
+  def user_params
+    params.require(admin_profile_user_path).permit(:name, :last_name, :email, :password, :role)
+  end
 
-    def admin!
-      redirect_to root_path, notice: 'Не имеете права доступа!' unless current_user.role.admin?
-    end
+  def admin!
+    redirect_to root_path, notice: 'Не имеете права доступа!' unless current_user.role.admin?
+  end
 end

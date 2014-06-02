@@ -27,10 +27,10 @@ class Post < ActiveRecord::Base
       transition :publish => :archive
     end
 
-  state :new_post
-  state :approved
-  state :archive
-  state :publish
+    state :new_post
+    state :approved
+    state :archive
+    state :publish
 
   end
 end
